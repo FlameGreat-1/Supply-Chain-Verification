@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: supply-chain-blockchain
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: supply-chain-blockchain
+  template:
+    metadata:
+      labels:
+        app: supply-chain-blockchain
+    spec:
+      containers:
+      - name: supply-chain-blockchain
+        image: hyperledger/fabric-peer:2.2
+        ports:
+        - containerPort: 7051
+        env:
+        - name: CORE_PEER_ID
+          value: "peer0.org1.example.com"
+        - name: CORE_PEER_ADDRESS
+          value: "peer0.org1.example.com:7051"
+        - name: CORE_PEER_LOCALMSPID
+          value: "Org1MSP"
+        - name: CORE_PEER_MSPCONFIGPATH
+          value: "/etc/hyperledger/msp/peer/"
+        volumeMounts:
+        - name: docker-socket
+          mountPath: /host/var/run/
+        - name: crypto-config
+          mountPath: /etc/hyperledger/msp
+        resources:
+          requests:
+            cpu: 500m
+            memory: 1Gi
+          limits:
+            cpu: 1
+            memory: 2Gi
+        readinessProbe:
+          exec:
+            command: ["peer", "node", "status"]
+          initialDelaySeconds: 15
+          periodSeconds: 10
+        livenessProbe:
+          exec:
+            command: ["peer", "node", "status"]
+          initialDelaySeconds: 30
+          periodSeconds: 30
+      volumes:
+      - name: docker-socket
+        hostPath:
+          path: /var/run/
+      - name: crypto-config
+        configMap:
+          name: blockchain-crypto-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: supply-chain-blockchain
+spec:
+  selector:
+    app: supply-chain-blockchain
+  ports:
+    - protocol: TCP
+      port: 7051
+      targetPort: 7051
+  type: ClusterIP

@@ -1,0 +1,119 @@
+# Dependency directories
+node_modules/
+vendor/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build outputs
+/dist
+/build
+/out
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# IDE and Editor folders
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Testing
+/coverage
+
+# Temporary files
+*.tmp
+*.temp
+
+# Blockchain specific
+/chaincode/packaging
+/fabric-samples
+
+# Ethereum specific
+/ethereum/build
+
+# Docker
+docker-compose.override.yml
+
+# Kubernetes
+kubeconfig
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Java
+*.class
+*.jar
+*.war
+
+# Certificates and keys
+*.pem
+*.key
+*.crt
+
+# Database files
+*.sqlite
+*.db
+
+# Backup files
+*.bak
+*.backup
+
+# Cache directories
+.cache/
+.npm/
+
+# Yarn
+yarn-error.log
+.yarn-integrity
+
+# Jest
+.jest-cache
+
+# Production configuration files
+config.production.js
+
+# Generated documentation
+/docs/_site
+
+# IoT device firmware binaries
+/iot/firmware/*.bin
+
+# Analytics data exports
+/analytics/exports/
+
+# User uploaded content
+/uploads/
+
+# Temporary blockchain data
+/blockchain/temp/
+
+# Performance test results
+/tests/performance/results/
+
+# Dependency lock files
+package-lock.json
+yarn.lock
+
+# Mobile app specific
+*.keystore
+*.jks
+*.p12
+google-services.json
+GoogleService-Info.plist
+
+# Sensitive information
+secrets.yaml
