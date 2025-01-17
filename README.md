@@ -118,10 +118,9 @@ This project is licensed under the Proprietary Software License- see the [LICENS
 
 ## Acknowledgments
 
-- List any third-party libraries, tools, or resources used in the project
-- Credit any external contributors or inspirations
+- Check the acknowledgement directory at /doc/acknowledgement
 
 ## Contact
 
-For any queries, please contact support@yourcompany.com.
+For any queries, please contact support@OmniLens.com.
 
